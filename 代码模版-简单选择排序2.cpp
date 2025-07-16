@@ -17,9 +17,9 @@ void selectSort(int a[],int n)
 				mini=j;
 			}
 		}
-		a[i]=temp;
-		a[i]=a[mini];
-		a[mini]=temp;
+		temp = a[i]; 
+		a[i] = a[mini]; 
+		a[mini] = temp; 
 		for(int k=0;k<n;k++)
 		{
 			printf("%d ",a[k]);
