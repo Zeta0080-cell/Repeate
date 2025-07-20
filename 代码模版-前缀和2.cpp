@@ -5,7 +5,7 @@ const int N=1e3;
 
 int main()
 {
-	int s[N]={0};//用于存储前缀和数组
+	int s[N]={0};//用于存储前缀和数组 
 	int a[N];
 	int n,m,l,r;
 	cin>>n>>m;
