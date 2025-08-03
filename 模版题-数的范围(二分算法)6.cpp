@@ -2,34 +2,55 @@
 #include<bits/stdc++.h>
 using namespace std;
 const int N=1e6;
-int a[N],d[N];
+int a[N];
 
 int main()
 {
-	int n,m;
-	int l,r,c;
-	cin>>n>>m;
-	for(int i=1;i<=n;i++)
+	int n,q;//n个数,q次询问 
+	int x;
+	cin>>n>>q;
+	for(int i=0;i<n;i++)
 	{
-		scanf("%d",&a[i]);//构造差分数组 
-	}
-	for(int i=1;i<=n;i++)
+		scanf("%d",&a[i]);	
+	} 
+	while(q--)
 	{
-		d[i]=a[i]-a[i-1];	
-	}
-	while(m--)
-	{
-		cin>>l>>r>>c;
-		d[l]+=c;
-		d[r+1]-=c;
-	}
-	for(int i=1;i<=n;i++)//利用前缀和求操做完后的数组 
-	{
-		d[i]+=d[i-1];
-	}
-	for(int i=1;i<=n;i++)
-	{
-		printf("%d ",d[i]);
+		cin>>x;
+		int l=0,r=n-1;
+		while(l<r)
+		{
+			int mid=(l+r)/2;
+			if(a[mid]>=x)
+			{
+				r=mid;
+			}
+			else
+			{
+				l=mid+1;
+			}
+		}
+		if(a[l]!=x)
+		{
+			printf("-1 -1\n");
+		}
+		else
+		{
+			printf("%d ",l);
+			int l=0,r=n-1;
+			while(l<r)
+			{
+				int mid=(l+r)/2+1;
+				if(a[mid]<=x)
+				{
+					l=mid;
+				}
+				else
+				{
+					r=mid-1;
+				}
+			}
+			printf("%d\n",l);
+		}
 	}
 	return 0;
 } 
